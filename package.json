@@ -1,0 +1,25 @@
+{
+  "name": "fso_ts",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karolinakwasny/Full_Stack_open_TypeScript.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "test": "../tests"
+  },
+  "scripts": {
+    "calculateBmi": "ts-node bmiCalculator.ts",
+    "test": "npx vitest run"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.6"
+  }
+}
