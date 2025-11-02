@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest' // or 'jest' if using Jest
+import { describe, it, expect } from 'vitest'
 import { calculateBmi } from '../bmiCalculator'
 
 const tests = [
