@@ -4,7 +4,6 @@ export const calculateBmi = (height: number, weight: number): Result => {
         throw new Error('Height and weight must be finite numbers.');
     }
     if ((height <= 0) || (weight <= 0)) throw new Error('Height and weight has to be bigger than 0.');
-    if ((height < 50) || (height > 250)) throw new Error('Height should be within range of 50-250 cm.');
 
     let height_in_m = height / 100;
     const bmi = parseFloat((weight / (height_in_m * height_in_m)).toFixed(1));
