@@ -3,6 +3,7 @@ type helperResult = {
     rating: number;
     ratingDescription: string;
 }
+
 function getRating(average: number, target: number): helperResult {
     if (average > target)
         return { success: true, rating: 1, ratingDescription: "Great work!" };
@@ -26,11 +27,15 @@ interface Output  {
     average: number;
 }
 
-type Result = Output | string;
+export type Result = Output | string;
 
-const calculateExercises = (givenArray: number[], dailyTarget: number): Result => {
+export const calculateExercises = (givenArray: number[], dailyTarget: number): Result => {
     const numberOfDays: number = givenArray.length;
     if (numberOfDays === 0 ) throw new Error('The amount of days can\'t be 0.');
+
+    if (givenArray.some(num => typeof num !== "number" || isNaN(num) || !isFinite(num))) {
+        throw new Error("All daily hours must be valid numbers.");
+    }
 
     const hasNegative :boolean = givenArray.some(num => num < 0);
     if (hasNegative) throw new Error('You can\'t work out negative hours, please provide correct data.');

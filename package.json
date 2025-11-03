@@ -16,7 +16,8 @@
   "scripts": {
     "calculateBmi": "ts-node bmiCalculator.ts",
     "calculateExercises": "ts-node exerciseCalculator.ts",
-    "test": "npx vitest run"
+    "tests": "npx vitest run",
+    "test": "npx vitest run tests/calculateExercises.test.ts"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",
