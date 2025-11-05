@@ -1,3 +1,33 @@
+import {calculateBmi} from "./bmiCalculator";
+
+interface Data {
+    target:number;
+    array:number[];
+}
+
+const parseArguments = (args :string[]) :Data => {
+    if (args.length < 4) throw new Error('Not enough arguments');
+
+    const target = Number(args[2]);
+    if (isNaN(target) || !isFinite(target)) {
+        throw new Error('Target must be a number!');
+    }
+
+    let returnArray :number[] = [];
+    for (let i = 3; i < args.length; i++) {
+        const num = Number(args[i]);
+        if (isNaN(num) || !isFinite(num)) {
+            throw new Error('At least one provided value is not a number!');
+        }
+        returnArray.push(num);
+    }
+
+    return {
+        target,
+        array: returnArray
+    }
+}
+
 type helperResult = {
     success: boolean;
     rating: number;
@@ -54,4 +84,14 @@ export const calculateExercises = (givenArray: number[], dailyTarget: number): R
 
 }
 
-console.log(calculateExercises([3,0,2,4.5,0,3,1], 2));
+
+try {
+    const { target, array } = parseArguments(process.argv);
+    console.log(calculateExercises( array, target));
+} catch (error :unknown) {
+    let errorMessage = 'Something bad happened.';
+    if (error instanceof Error){
+        errorMessage = 'Error: ' + error.message;
+    }
+    console.log(errorMessage);
+}
